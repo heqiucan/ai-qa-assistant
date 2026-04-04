@@ -12,7 +12,7 @@ logging.basicConfig(
 def get_weather(city):
     try:
         # 故意制造一个可能出错的地方（比如字典取值、变量名错误）
-        weather_types2 = ["晴", "多云", "阴", "小雨", "中雨", "雷阵雨"]
+        weather_types = ["晴", "多云", "阴", "小雨", "中雨", "雷阵雨"]
         weather = random.choice(weather_types)
         temperature = random.randint(5, 35)
         # 假设下面这行代码可能引发 KeyError（比如从空字典取值）
