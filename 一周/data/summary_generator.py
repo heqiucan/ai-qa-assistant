@@ -1,3 +1,6 @@
+import sys
+import argparse
+
 import logging
 import dashscope
 from dashscope import Generation
@@ -55,11 +58,13 @@ def generate_summary(text):
     except Exception as e:
         logging.error(f"调用异常: {e}")
         return f"调用失败: {e}"
-
 def main():
-    file_path = "sample.txt"
-    print("程序启动，正在读取文件...")
+    parser = argparse.ArgumentParser(description='文本摘要生成器 - 调用通义千问 API 生成摘要')
+    parser.add_argument('file', help='要处理的文本文件路径')
+    args = parser.parse_args()
 
+    file_path = args.file
+    print(f"程序启动，正在读取文件: {file_path}")
     content = read_file(file_path)
     if content:
         print(f"文件读取成功，共 {len(content)} 字符")
@@ -71,6 +76,7 @@ def main():
         print("="*50)
     else:
         print("无法读取文件，程序结束")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
