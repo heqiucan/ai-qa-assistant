@@ -1,10 +1,13 @@
-# 天气查询命令行工具
+# Python 小工具集
 
-## 功能
-- 输入城市名，返回模拟天气（晴、多云、雨等）和随机温度。
-- 支持循环查询，输入 `q` 退出。
-- 日志记录到 `logs/weather.log`，同时输出到控制台。
+## 1. 天气查询命令行工具（`scripts/weather_cli.py`）
+...
 
-## 运行
-```bash
-python scripts/weather_cli.py
+## 2. 文档摘要生成器（`一周/data/summary_generator.py`）
+...
+
+### 运行示例
+...
+### 运行截图
+![摘要生成器运行截图](./images/demo.png)
+...
