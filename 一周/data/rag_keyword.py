@@ -3,11 +3,8 @@ import os
 import dashscope
 from dashscope import Generation
 
-
-dashscope.api_key = os.getenv("DASHSCOPE_API_KEY", "YOUR_API_KEY")
-
-
-# 请替换成你的真实Key
+# API Key 配置：优先从环境变量读取（部署时用），否则使用硬编码（本地测试）
+dashscope.api_key = os.getenv("DASHSCOPE_API_KEY", "sk-d3e0c2eb1feb4b4aab36d1b770de8151")
 
 def load_document(file_path):
     try:
@@ -17,7 +14,8 @@ def load_document(file_path):
         return None
 
 def split_paragraphs(text):
-    return [p.strip() for p in text.split('\n\n') if p.strip()]
+    paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+    return paragraphs
 
 def extract_keywords(question):
     words = re.findall(r'[\u4e00-\u9fa5a-zA-Z0-9]+', question)

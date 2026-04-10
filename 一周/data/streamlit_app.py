@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from rag_keyword import load_document, split_paragraphs, extract_keywords, retrieve_paragraph, ask_llm
 
 st.set_page_config(page_title="文档问答助手 (关键词检索版)", page_icon="📚")
@@ -7,7 +8,6 @@ st.markdown("基于 `knowledge.txt`，使用关键词检索 + 通义千问")
 
 @st.cache_resource
 def load_knowledge_base():
-    import os
     script_dir = os.path.dirname(__file__)
     file_path = os.path.join(script_dir, "knowledge.txt")
     content = load_document(file_path)
@@ -17,7 +17,7 @@ def load_knowledge_base():
 
 paragraphs = load_knowledge_base()
 if paragraphs is None:
-    st.error("知识库文件 'knowledge.txt' 加载失败")
+    st.error("知识库文件 'knowledge.txt' 加载失败，请检查文件是否存在。")
     st.stop()
 
 st.success(f"知识库加载成功，共 {len(paragraphs)} 个段落。")
