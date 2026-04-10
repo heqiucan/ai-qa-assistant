@@ -7,7 +7,10 @@ st.markdown("基于 `knowledge.txt`，使用关键词检索 + 通义千问")
 
 @st.cache_resource
 def load_knowledge_base():
-    content = load_document("knowledge.txt")
+    import os
+    script_dir = os.path.dirname(__file__)
+    file_path = os.path.join(script_dir, "knowledge.txt")
+    content = load_document(file_path)
     if content:
         return split_paragraphs(content)
     return None
